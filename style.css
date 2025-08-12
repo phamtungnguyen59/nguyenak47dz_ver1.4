@@ -1,0 +1,228 @@
+/* ======================
+   RESET + GLOBAL
+====================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+:root {
+  --main-color: #00eaff;
+  --hover-color: #ff00ff;
+  --text-color: #ffffff;
+  --accent-color: #658eff;
+  --bg-card: rgb(39, 37, 39);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: lightblue url("./935e74f06d82e5dcbc93.jpg") no-repeat fixed center / cover;
+  color: var(--text-color);
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lớp nền mờ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("./935e74f06d82e5dcbc93.jpg") no-repeat center / cover;
+  filter: blur(8px);
+  transform: scale(1.05); /* tránh lộ viền khi blur */
+  z-index: -2;
+}
+
+/* Lớp phủ để tối/mờ thêm */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4); /* điều chỉnh độ tối/mờ */
+  z-index: -1;
+}
+/* ======================
+   NEON ANIMATION
+====================== */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 30px var(--main-color);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--hover-color), 0 0 40px var(--hover-color), 0 0 60px var(--hover-color);
+  }
+  100% {
+    box-shadow: 0 0 8px var(--main-color), 0 0 20px var(--main-color), 0 0 30px var(--main-color);
+  }
+}
+
+/* ======================
+   PROFILE CARD
+====================== */
+.profile-container {
+  position: relative;
+  background-color: var(--bg-card);
+  width: 450px;
+  padding: 100px 50px 40px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  animation: neonGlow 2s infinite alternate;
+}
+
+.profile-container:hover {
+  transform: scale(1.05);
+  animation: neonGlow 0.8s infinite alternate;
+}
+
+/* ======================
+   PROFILE IMAGE
+====================== */
+.img-container {
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 8px 55px #008cffa4;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.img-container img {
+  width: 100%;
+  transform: scale(1.1);
+}
+
+/* ======================
+   USER INFO
+====================== */
+.info {
+  margin-bottom: 12px;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.full-name {
+  font-size: 1.4em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+}
+
+/* ======================
+   SOCIAL BUTTONS
+====================== */
+.social-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.social-container button {
+  border: none;
+  outline: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.social-container button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px var(--main-color);
+}
+
+/* Icons for social buttons */
+.social-container button.github {
+  background-image: url("https://i.pinimg.com/736x/17/a3/0b/17a30bf2086853f978548c3b87afa1fa.jpg");
+}
+
+.social-container button.youtube {
+  background-image: url("https://i.pinimg.com/736x/54/d2/e0/54d2e0d39bfe36f95f816df1c10ddcee.jpg");
+}
+
+.social-container button.discord {
+  background-image: url("https://i.pinimg.com/736x/9f/f3/5a/9ff35a70d43ebf3a4081a36f064976a1.jpg");
+}
+
+/* ======================
+   LINKS
+====================== */
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+  transform: scale(1.1);
+  color: #ffcc00;
+}
+
+/* ======================
+   TOP RIGHT BUTTONS
+====================== */
+.top-right-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.top-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.top-button:hover {
+  background-color: #0056b3;
+}
+
+/* ======================
+   EXTRA BOXES
+====================== */
+.discordcatto, .music {
+  position: relative;
+  border-radius: 15px;
+  width: 410px;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+====================== */
+@media (max-width: 500px) {
+  .profile-container {
+    width: 90%;
+    padding: 80px 20px 30px;
+  }
+  .discordcatto, .music {
+    width: 100%;
+  }
+}
